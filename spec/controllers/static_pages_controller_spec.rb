@@ -12,7 +12,7 @@ RSpec.describe StaticPagesController do
   describe "GET 'help'" do
     it "should have the content 'Sample App'" do
       visit '/static_pages/help'
-      expect(page).to have_content('Sample App')
+      expect(page).to have_content('mohan')
     end
   end
 
