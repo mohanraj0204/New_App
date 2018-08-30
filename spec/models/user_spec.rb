@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 RSpec.describe User, type: :model do
 	before do
 		@user = User.new(email:"user@gmail.com", password:"password", password_confirmation: "password")
@@ -11,6 +10,7 @@ RSpec.describe User, type: :model do
 	it {should respond_to(:password_digest)}
 	it {should respond_to(:password)}
 	it {should respond_to(:password_confirmation)}
+	it {should respond_to(:token)}
 	it {should respond_to(:authenticate)}
 
 	it {should be_valid}
@@ -35,6 +35,8 @@ RSpec.describe User, type: :model do
 
 	describe "Authentication" do
 		before {@user.save}
+		#its(:token){should_not be_blank}
+		it { expect(@user.token).not_to be_blank}
 		let(:get_user) {User.find_by(email: @user.email)}
 
 		describe "Signin Success!!" do
